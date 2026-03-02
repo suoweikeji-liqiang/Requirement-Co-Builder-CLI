@@ -41,7 +41,13 @@ Plans:
 4. System refuses to suggest architecture before the `structure` stage and flags abstract evaluative language without a logic chain
 5. User runs `req list` and sees all projects with their current clarity stage and last-updated timestamp
 
-**Plans:** TBD
+**Plans:** 4 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Project lifecycle commands (`new/list/open/delete`) and project service layer
+- [ ] 02-02-PLAN.md — Chat session engine with persistence, stage progression, five-dimension model, LOGIC_BASE, and compressed rewrites
+- [ ] 02-03-PLAN.md — Safety guardrails and reasoning blocks (LOGIC_CHAIN, BUSINESS_ASSUMPTION, stage/policy checks)
+- [ ] 02-04-PLAN.md — Snapshot command and trigger-gated knowledge explanation behavior
 
 ### Phase 3: Output & Polish
 **Goal:** Users can compile a finished dialogue into actionable spec documents and maintain a research/decision trail.
@@ -60,5 +66,5 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-03-02 |
-| 2. Core Dialogue | 0/? | Not started | - |
+| 2. Core Dialogue | 0/4 | In Progress | - |
 | 3. Output & Polish | 0/? | Not started | - |
