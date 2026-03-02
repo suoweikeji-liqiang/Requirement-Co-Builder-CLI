@@ -13,7 +13,7 @@
 - [ ] **PROJ-04**: User can delete a project
 - [ ] **PROJ-05**: User can save and resume dialogue sessions (`req chat <id>` restores full context)
 - [ ] **PROJ-06**: User can create milestone snapshots (`req snapshot <id> --tag v0.1`)
-- [ ] **PROJ-07**: User can configure storage location (global `~/.reqgen/` or `--local` current directory)
+- [x] **PROJ-07**: User can configure storage location (global `~/.reqgen/` or `--local` current directory)
 
 ### Dialogue Engine
 
@@ -46,7 +46,7 @@
 - [ ] **INFR-02**: Streaming LLM responses for responsive UX
 - [ ] **INFR-03**: Structured output parsing with fallback/retry on malformed responses
 - [ ] **INFR-04**: Atomic file writes (temp + rename) for crash safety
-- [ ] **INFR-05**: Cross-platform support (Windows / macOS / Linux) with correct path and encoding handling
+- [x] **INFR-05**: Cross-platform support (Windows / macOS / Linux) with correct path and encoding handling
 - [ ] **INFR-06**: Dialogue language Chinese, structured output fields English
 
 ## v2 Requirements
@@ -85,7 +85,7 @@
 | PROJ-04 | Phase 2 | Pending |
 | PROJ-05 | Phase 2 | Pending |
 | PROJ-06 | Phase 2 | Pending |
-| PROJ-07 | Phase 1 | Pending |
+| PROJ-07 | Phase 1 | Complete |
 | DIAL-01 | Phase 2 | Pending |
 | DIAL-02 | Phase 2 | Pending |
 | DIAL-03 | Phase 2 | Pending |
@@ -106,7 +106,7 @@
 | INFR-02 | Phase 1 | Pending |
 | INFR-03 | Phase 1 | Pending |
 | INFR-04 | Phase 1 | Pending |
-| INFR-05 | Phase 1 | Pending |
+| INFR-05 | Phase 1 | Complete |
 | INFR-06 | Phase 1 | Pending |
 
 **Coverage:**

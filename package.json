@@ -48,6 +48,9 @@
           "useESM": true
         }
       ]
-    }
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(chalk|ansi-styles|#ansi-styles)/)"
+    ]
   }
 }
