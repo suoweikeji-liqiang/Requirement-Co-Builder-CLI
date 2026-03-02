@@ -7,7 +7,7 @@
 ## Phases
 
 - [x] **Phase 1: Foundation** - Infrastructure, LLM adapter, state/file I/O, cross-platform setup
-- [ ] **Phase 2: Core Dialogue** - Project management commands, dialogue engine, safety guards
+- [x] **Phase 2: Core Dialogue** - Project management commands, dialogue engine, safety guards
 - [ ] **Phase 3: Output & Polish** - Build compilation, research notes, decision log, idea.md
 
 ## Phase Details
@@ -66,5 +66,5 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-03-02 |
-| 2. Core Dialogue | 4/4 | In Progress | - |
+| 2. Core Dialogue | 4/4 | Complete | 2026-03-02 |
 | 3. Output & Polish | 0/? | Not started | - |
