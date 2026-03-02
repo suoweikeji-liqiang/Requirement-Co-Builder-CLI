@@ -1,7 +1,7 @@
 # Requirements: Requirement Co-Builder CLI
 
 **Defined:** 2026-03-02
-**Core Value:** 通过结构化对话让模糊想法逐轮收敛为可执行的需求描述，同时保持人对思考过程的主导权。
+**Core Value:** Converge ambiguous ideas into executable requirements through structured dialogue while keeping human-led reasoning.
 
 ## v1 Requirements
 
@@ -12,13 +12,13 @@
 - [x] **PROJ-03**: User can open/view a project (`req open <id>`)
 - [x] **PROJ-04**: User can delete a project
 - [x] **PROJ-05**: User can save and resume dialogue sessions (`req chat <id>` restores full context)
-- [ ] **PROJ-06**: User can create milestone snapshots (`req snapshot <id> --tag v0.1`)
+- [x] **PROJ-06**: User can create milestone snapshots (`req snapshot <id> --tag v0.1`)
 - [x] **PROJ-07**: User can configure storage location (global `~/.reqgen/` or `--local` current directory)
 
 ### Dialogue Engine
 
 - [x] **DIAL-01**: System conducts mentor-style dialogue: restate understanding, advance one point, compress rewrite each round
-- [x] **DIAL-02**: System tracks clarity stage progression (concept → direction → structure → executable)
+- [x] **DIAL-02**: System tracks clarity stage progression (concept -> direction -> structure -> executable)
 - [x] **DIAL-03**: System maintains five-dimension structural model (Context / Actors / Intent / Mechanism / Boundary)
 - [x] **DIAL-04**: System outputs LOGIC_BASE (explicit premises with source tags) each round
 - [x] **DIAL-05**: System outputs LOGIC_CHAIN (CAUSE/EFFECT/ASSUMPTION) when causal reasoning appears
@@ -30,7 +30,7 @@
 - [x] **SAFE-01**: System prohibits abstract evaluative language (better/optimal/advanced) without logic chain
 - [x] **SAFE-02**: System prohibits architecture suggestions before structure stage
 - [x] **SAFE-03**: System detects model-dominant rhythm (consecutive rounds without questions or with excessive suggestions)
-- [ ] **SAFE-04**: Knowledge explanation only on user trigger (`/explain` `/deep-dive` `/later`), ≤8 sentences, with confidence tag
+- [x] **SAFE-04**: Knowledge explanation only on user trigger (`/explain` `/deep-dive` `/later`), <=8 sentences, with confidence tag
 - [x] **SAFE-05**: Business assumptions explicitly surfaced (BUSINESS_ASSUMPTION block) when business judgments appear
 
 ### Output & Compilation
@@ -84,7 +84,7 @@
 | PROJ-03 | Phase 2 | Complete |
 | PROJ-04 | Phase 2 | Complete |
 | PROJ-05 | Phase 2 | Complete |
-| PROJ-06 | Phase 2 | Pending |
+| PROJ-06 | Phase 2 | Complete |
 | PROJ-07 | Phase 1 | Complete |
 | DIAL-01 | Phase 2 | Complete |
 | DIAL-02 | Phase 2 | Complete |
@@ -96,7 +96,7 @@
 | SAFE-01 | Phase 2 | Complete |
 | SAFE-02 | Phase 2 | Complete |
 | SAFE-03 | Phase 2 | Complete |
-| SAFE-04 | Phase 2 | Pending |
+| SAFE-04 | Phase 2 | Complete |
 | SAFE-05 | Phase 2 | Complete |
 | OUT-01 | Phase 3 | Pending |
 | OUT-02 | Phase 3 | Pending |
@@ -116,4 +116,4 @@
 
 ---
 *Requirements defined: 2026-03-02*
-*Last updated: 2026-03-02 after roadmap creation*
+*Last updated: 2026-03-02 after phase 2 plan completion*
