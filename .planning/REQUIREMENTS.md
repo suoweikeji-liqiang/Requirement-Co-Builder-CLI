@@ -45,7 +45,7 @@
 - [ ] **INFR-01**: Multi-provider LLM support (OpenAI, Anthropic) via configurable adapter
 - [ ] **INFR-02**: Streaming LLM responses for responsive UX
 - [ ] **INFR-03**: Structured output parsing with fallback/retry on malformed responses
-- [ ] **INFR-04**: Atomic file writes (temp + rename) for crash safety
+- [x] **INFR-04**: Atomic file writes (temp + rename) for crash safety
 - [x] **INFR-05**: Cross-platform support (Windows / macOS / Linux) with correct path and encoding handling
 - [ ] **INFR-06**: Dialogue language Chinese, structured output fields English
 
@@ -105,7 +105,7 @@
 | INFR-01 | Phase 1 | Pending |
 | INFR-02 | Phase 1 | Pending |
 | INFR-03 | Phase 1 | Pending |
-| INFR-04 | Phase 1 | Pending |
+| INFR-04 | Phase 1 | Complete |
 | INFR-05 | Phase 1 | Complete |
 | INFR-06 | Phase 1 | Pending |
 
