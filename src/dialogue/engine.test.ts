@@ -74,6 +74,27 @@ describe('dialogue engine round execution', () => {
     expect(result.logicBase.length).toBeGreaterThan(0);
   });
 
+  it('applies stage policy and exposes guard warnings', async () => {
+    const state = createInitialState('proj-guard', 'Build a platform', true);
+    const result = await executeRound(state, 'Help me design architecture', {
+      respond: async () => 'Use a microservice architecture with Redis and Kubernetes.',
+    });
+
+    expect(result.guardWarnings.length).toBeGreaterThan(0);
+    expect(result.assistantText.toLowerCase().includes('deferred')).toBe(true);
+  });
+
+  it('emits logic chain and business assumption blocks when applicable', async () => {
+    const state = createInitialState('proj-logic', 'Build SaaS', true);
+    const result = await executeRound(state, 'Need monetization clarity', {
+      respond: async () =>
+        'Because users need quick setup, conversion improves. Users are willing to pay when onboarding is short.',
+    });
+
+    expect(result.logicChainBlock.includes('LOGIC_CHAIN')).toBe(true);
+    expect(result.businessAssumptionBlock.includes('BUSINESS_ASSUMPTION')).toBe(true);
+  });
+
   it('appends user and assistant messages and updates stage/projection in state', () => {
     const state = createInitialState('proj-2', 'Plan my CLI', true);
     const updated = appendRoundToState(state, {
@@ -93,6 +114,11 @@ describe('dialogue engine round execution', () => {
         threeLiner: 'Define scope.\nPick one command.\nRefine details.',
         structured: '{"oneLiner":"Define the core command first."}',
       },
+      guardWarnings: [],
+      logicChains: [],
+      businessAssumptions: [],
+      logicChainBlock: '',
+      businessAssumptionBlock: '',
     });
 
     expect(updated.messages.length).toBe(2);
