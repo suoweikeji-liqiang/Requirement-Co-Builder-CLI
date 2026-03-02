@@ -10,5 +10,6 @@ describe('req CLI command wiring', () => {
     expect(names).toContain('delete');
     expect(names).toContain('snapshot');
     expect(names).toContain('build');
+    expect(names).toContain('research');
   });
 });
