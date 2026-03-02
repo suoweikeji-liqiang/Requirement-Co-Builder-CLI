@@ -7,10 +7,10 @@
 
 ### Project Management
 
-- [ ] **PROJ-01**: User can create a new project from a raw idea sentence (`req new "<idea>"`)
-- [ ] **PROJ-02**: User can list all projects with stage and last-updated (`req list`)
-- [ ] **PROJ-03**: User can open/view a project (`req open <id>`)
-- [ ] **PROJ-04**: User can delete a project
+- [x] **PROJ-01**: User can create a new project from a raw idea sentence (`req new "<idea>"`)
+- [x] **PROJ-02**: User can list all projects with stage and last-updated (`req list`)
+- [x] **PROJ-03**: User can open/view a project (`req open <id>`)
+- [x] **PROJ-04**: User can delete a project
 - [ ] **PROJ-05**: User can save and resume dialogue sessions (`req chat <id>` restores full context)
 - [ ] **PROJ-06**: User can create milestone snapshots (`req snapshot <id> --tag v0.1`)
 - [x] **PROJ-07**: User can configure storage location (global `~/.reqgen/` or `--local` current directory)
@@ -79,10 +79,10 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PROJ-01 | Phase 2 | Pending |
-| PROJ-02 | Phase 2 | Pending |
-| PROJ-03 | Phase 2 | Pending |
-| PROJ-04 | Phase 2 | Pending |
+| PROJ-01 | Phase 2 | Complete |
+| PROJ-02 | Phase 2 | Complete |
+| PROJ-03 | Phase 2 | Complete |
+| PROJ-04 | Phase 2 | Complete |
 | PROJ-05 | Phase 2 | Pending |
 | PROJ-06 | Phase 2 | Pending |
 | PROJ-07 | Phase 1 | Complete |
