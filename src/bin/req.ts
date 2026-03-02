@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import { loadConfig, saveConfig } from '../config/index.js';
+import { createProject, deleteProject, listProjects, openProject } from '../projects/index.js';
+import { pathToFileURL } from 'node:url';
 
 const VALID_PROVIDERS = ['openai', 'anthropic'] as const;
 type Provider = typeof VALID_PROVIDERS[number];
@@ -9,7 +11,15 @@ function isValidProvider(value: string): value is Provider {
   return VALID_PROVIDERS.includes(value as Provider);
 }
 
-async function main(): Promise<void> {
+function formatTimestamp(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) {
+    return iso;
+  }
+  return date.toISOString();
+}
+
+export function buildProgram(): Command {
   const program = new Command();
 
   program
@@ -18,9 +28,7 @@ async function main(): Promise<void> {
     .version('0.1.0')
     .option('--local', 'use current directory for project storage instead of ~/.reqgen/');
 
-  const configCmd = program
-    .command('config')
-    .description('Manage configuration settings');
+  const configCmd = program.command('config').description('Manage configuration settings');
 
   configCmd
     .command('set-key <provider> <key>')
@@ -53,11 +61,73 @@ async function main(): Promise<void> {
       console.log(`Default provider set to ${provider}.`);
     });
 
+  program
+    .command('new <idea>')
+    .description('Create a new project from an idea')
+    .action(async function (idea: string) {
+      const useLocal = this.optsWithGlobals().local === true;
+      const created = await createProject(idea, useLocal);
+      console.log(`Created project: ${created.id}`);
+      console.log(`Path: ${created.projectDir}`);
+    });
+
+  program
+    .command('list')
+    .description('List projects with stage and last updated')
+    .action(async function () {
+      const useLocal = this.optsWithGlobals().local === true;
+      const projects = await listProjects(useLocal);
+
+      if (projects.length === 0) {
+        console.log('No projects found.');
+        return;
+      }
+
+      console.log('ID'.padEnd(24) + 'Stage'.padEnd(14) + 'Updated At');
+      console.log('-'.repeat(70));
+      for (const project of projects) {
+        console.log(
+          project.id.padEnd(24) +
+            project.clarityStage.padEnd(14) +
+            formatTimestamp(project.updatedAt),
+        );
+      }
+    });
+
+  program
+    .command('open <id>')
+    .description('View project summary')
+    .action(async function (id: string) {
+      const useLocal = this.optsWithGlobals().local === true;
+      const state = await openProject(id, useLocal);
+      console.log(`ID: ${state.id}`);
+      console.log(`Idea: ${state.idea}`);
+      console.log(`Stage: ${state.clarityStage}`);
+      console.log(`Messages: ${state.messages.length}`);
+      console.log(`Updated: ${formatTimestamp(state.updatedAt)}`);
+    });
+
+  program
+    .command('delete <id>')
+    .description('Delete a project')
+    .action(async function (id: string) {
+      const useLocal = this.optsWithGlobals().local === true;
+      await deleteProject(id, useLocal);
+      console.log(`Deleted project: ${id}`);
+    });
+
+  return program;
+}
+
+async function main(): Promise<void> {
+  const program = buildProgram();
   await program.parseAsync(process.argv);
 }
 
-main().catch((err: unknown) => {
-  const message = err instanceof Error ? err.message : String(err);
-  console.error(`Error: ${message}`);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((err: unknown) => {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error(`Error: ${message}`);
+    process.exit(1);
+  });
+}
