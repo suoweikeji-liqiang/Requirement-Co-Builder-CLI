@@ -36,9 +36,9 @@
 ### Output & Compilation
 
 - [x] **OUT-01**: `req build` compiles state into spec.md + acceptance.md + tasks.md
-- [ ] **OUT-02**: idea.md auto-updates each round with one-liner / three-liner / structured / stage / open points
+- [x] **OUT-02**: idea.md auto-updates each round with one-liner / three-liner / structured / stage / open points
 - [ ] **OUT-03**: User can add research notes (`req research add-note`) and links (`req research add-link`)
-- [ ] **OUT-04**: Decision log (decisions.md) records confirmation/modification points from dialogue
+- [x] **OUT-04**: Decision log (decisions.md) records confirmation/modification points from dialogue
 
 ### Infrastructure
 
@@ -99,9 +99,9 @@
 | SAFE-04 | Phase 2 | Complete |
 | SAFE-05 | Phase 2 | Complete |
 | OUT-01 | Phase 3 | Complete |
-| OUT-02 | Phase 3 | Pending |
+| OUT-02 | Phase 3 | Complete |
 | OUT-03 | Phase 3 | Pending |
-| OUT-04 | Phase 3 | Pending |
+| OUT-04 | Phase 3 | Complete |
 | INFR-01 | Phase 1 | Complete |
 | INFR-02 | Phase 1 | Complete |
 | INFR-03 | Phase 1 | Complete |
