@@ -1,41 +1,51 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: in_progress
+last_updated: "2026-03-02T08:05:00.000Z"
+progress:
+  total_phases: 3
+  completed_phases: 1
+  total_plans: 3
+  completed_plans: 3
+---
+
 # Project State
 
 ## Project Reference
 See: .planning/PROJECT.md (updated 2026-03-02)
-**Core value:** 通过结构化对话让模糊想法逐轮收敛为可执行的需求描述，同时保持人对思考过程的主导权。
-**Current focus:** Phase 1 - Foundation (Plan 02 complete)
+**Core value:** Converge ambiguous ideas into executable requirements through structured dialogue while keeping human-led reasoning.
+**Current focus:** Phase 2 - Core Dialogue (Phase 1 complete)
 
 ## Progress
 
 | Phase | Status | Progress |
 |-------|--------|----------|
-| 1. Foundation | ◔ In Progress | 67% (2/3 plans) |
-| 2. Core Dialogue | ○ Pending | 0% |
-| 3. Output & Polish | ○ Pending | 0% |
+| 1. Foundation | Complete | 100% (3/3 plans) |
+| 2. Core Dialogue | Pending | 0% |
+| 3. Output & Polish | Pending | 0% |
 
 ## Current Phase
-Phase 1: Foundation — Plans 01-02 complete. Next: Plan 03 (LLM adapter + streaming display).
+Phase 2: Core Dialogue - Foundation is complete. Next: gather context and create plans for Phase 2.
 
 ## Accumulated Context
 
 ### Key Decisions
 - Node.js / TypeScript, ESM-only, Node 18+
-- Vercel AI SDK v5 for LLM integration (OpenAI + Anthropic adapters)
-- Atomic writes: temp + rename; `.bak` recovery on corrupt state
+- Vercel AI SDK v4 adapters for OpenAI and Anthropic
+- Atomic writes: temp + rename; `.bak`/`.tmp` recovery for state safety
 - Storage: `~/.reqgen/projects/` global or `--local` current directory
 - Dialogue language Chinese; structured output fields English
-- TDD applied to all Plan 02 tasks: failing tests written first, implementation follows
-- Jest uses --experimental-vm-modules + node_modules/jest/bin/jest.js for Windows + chalk ESM compat
-- Zod v3 (not v4) installed — flat schemas compatible; no migration needed for Phase 1
-- generateProjectId fallback slug 'project' for non-ASCII (Chinese) ideas
-- writeProjectState immutable: spread creates new object, original never mutated
-- readProjectState returns null on Zod validation failure (treat corrupt as missing)
+- Jest uses `--experimental-vm-modules` + direct `jest.js` invocation for Windows ESM compatibility
+- Zod v3 retained (flat schemas are sufficient for current validation scope)
+- LLM structured output uses `Output.object` first, then fenced-JSON strip + `jsonrepair` fallback
+- Stream renderer does not manage spinners; caller must stop spinner before streaming
 
 ### Open Questions
-- Context window budget: how many raw turns before rolling summary? (research suggests 6–8)
-- Clarity stage transition triggers: turn count, LLM score, or explicit user confirmation?
-- Provider selection UX: config file vs. env vars vs. interactive first-run setup?
-- Windows atomic rename: handled via EXDEV fallback in saveConfig (resolved)
+- Context window budget: how many raw turns before rolling summary injection?
+- Clarity stage transition trigger: turn count, model score, or explicit user confirmation?
+- Provider onboarding UX: config commands only vs. interactive first-run setup?
 
 ### Blockers
 None.
@@ -46,6 +56,7 @@ None.
 |-------|------|----------|-------|-------|
 | 01-foundation | 01 | 11min | 2 | 8 |
 | 01-foundation | 02 | 28min | 2 | 11 |
+| 01-foundation | 03 | 1h 24m | 2 | 3 |
 
 ---
-*Last session: 2026-03-02T09:25:00Z — Stopped at: Completed 01-foundation/01-02-PLAN.md*
+*Last session: 2026-03-02T08:00:24Z - Stopped at: Completed 01-foundation/01-03-PLAN.md*

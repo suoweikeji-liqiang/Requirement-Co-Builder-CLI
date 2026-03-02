@@ -6,7 +6,7 @@
 
 ## Phases
 
-- [ ] **Phase 1: Foundation** - Infrastructure, LLM adapter, state/file I/O, cross-platform setup
+- [x] **Phase 1: Foundation** - Infrastructure, LLM adapter, state/file I/O, cross-platform setup
 - [ ] **Phase 2: Core Dialogue** - Project management commands, dialogue engine, safety guards
 - [ ] **Phase 3: Output & Polish** - Build compilation, research notes, decision log, idea.md
 
@@ -28,7 +28,7 @@
 Plans:
 - [x] 01-01-PLAN.md — Project scaffold + config system (package.json, tsconfig, tsup, paths, config load/save, CLI entry with `req config` commands)
 - [x] 01-02-PLAN.md — Atomic state I/O + project utilities (atomic write/recovery, state schema, state read/write, project ID generation, error display)
-- [ ] 01-03-PLAN.md — LLM adapter + streaming display (multi-provider factory, structured output with Zod fallback, token streaming renderer with gutter indicator)
+- [x] 01-03-PLAN.md — LLM adapter + streaming display (multi-provider factory, structured output with Zod fallback, token streaming renderer with gutter indicator)
 
 ### Phase 2: Core Dialogue
 **Goal:** Users can create projects, conduct multi-turn mentor-style dialogues, and trust the system to keep them thinking clearly.
@@ -59,6 +59,6 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 2/3 | In Progress | - |
+| 1. Foundation | 3/3 | Complete | 2026-03-02 |
 | 2. Core Dialogue | 0/? | Not started | - |
 | 3. Output & Polish | 0/? | Not started | - |

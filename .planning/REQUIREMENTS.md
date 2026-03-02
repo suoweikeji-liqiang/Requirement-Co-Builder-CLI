@@ -42,12 +42,12 @@
 
 ### Infrastructure
 
-- [ ] **INFR-01**: Multi-provider LLM support (OpenAI, Anthropic) via configurable adapter
-- [ ] **INFR-02**: Streaming LLM responses for responsive UX
-- [ ] **INFR-03**: Structured output parsing with fallback/retry on malformed responses
+- [x] **INFR-01**: Multi-provider LLM support (OpenAI, Anthropic) via configurable adapter
+- [x] **INFR-02**: Streaming LLM responses for responsive UX
+- [x] **INFR-03**: Structured output parsing with fallback/retry on malformed responses
 - [x] **INFR-04**: Atomic file writes (temp + rename) for crash safety
 - [x] **INFR-05**: Cross-platform support (Windows / macOS / Linux) with correct path and encoding handling
-- [ ] **INFR-06**: Dialogue language Chinese, structured output fields English
+- [x] **INFR-06**: Dialogue language Chinese, structured output fields English
 
 ## v2 Requirements
 
@@ -102,12 +102,12 @@
 | OUT-02 | Phase 3 | Pending |
 | OUT-03 | Phase 3 | Pending |
 | OUT-04 | Phase 3 | Pending |
-| INFR-01 | Phase 1 | Pending |
-| INFR-02 | Phase 1 | Pending |
-| INFR-03 | Phase 1 | Pending |
+| INFR-01 | Phase 1 | Complete |
+| INFR-02 | Phase 1 | Complete |
+| INFR-03 | Phase 1 | Complete |
 | INFR-04 | Phase 1 | Complete |
 | INFR-05 | Phase 1 | Complete |
-| INFR-06 | Phase 1 | Pending |
+| INFR-06 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 29 total
