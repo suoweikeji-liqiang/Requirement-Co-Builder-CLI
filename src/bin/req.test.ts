@@ -9,5 +9,6 @@ describe('req CLI command wiring', () => {
     expect(names).toContain('open');
     expect(names).toContain('delete');
     expect(names).toContain('snapshot');
+    expect(names).toContain('build');
   });
 });
