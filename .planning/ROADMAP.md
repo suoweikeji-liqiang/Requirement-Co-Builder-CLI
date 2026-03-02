@@ -64,7 +64,7 @@ Plans:
 Plans:
 - [x] 03-01-PLAN.md - Build compiler command (`req build`) and output markdown generation (`spec.md`, `acceptance.md`, `tasks.md`)
 - [x] 03-02-PLAN.md - Round-driven artifact sync for `idea.md` and `decisions.md`
-- [ ] 03-03-PLAN.md - Research note/link persistence commands (`req research add-note`, `req research add-link`)
+- [x] 03-03-PLAN.md - Research note/link persistence commands (`req research add-note`, `req research add-link`)
 
 ## Progress
 
@@ -72,4 +72,4 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-03-02 |
 | 2. Core Dialogue | 4/4 | Complete | 2026-03-02 |
-| 3. Output & Polish | 2/3 | In Progress | - |
+| 3. Output & Polish | 3/3 | In Progress | - |
