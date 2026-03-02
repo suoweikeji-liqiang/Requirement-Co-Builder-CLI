@@ -66,6 +66,22 @@ export function buildProgram(): Command {
       console.log(`Default provider set to ${provider}.`);
     });
 
+  configCmd
+    .command('set-base-url <provider> <baseUrl>')
+    .description('Set base URL for a provider (openai or anthropic)')
+    .action(async (provider: string, baseUrl: string) => {
+      if (!isValidProvider(provider)) {
+        console.error(`Error: Invalid provider "${provider}". Must be one of: ${VALID_PROVIDERS.join(', ')}`);
+        process.exit(1);
+      }
+
+      const config = await loadConfig();
+      const urlField = `${provider}BaseUrl` as 'openaiBaseUrl' | 'anthropicBaseUrl';
+      const updated = { ...config, [urlField]: baseUrl };
+      await saveConfig(updated);
+      console.log(`Base URL for ${provider} set to ${baseUrl}.`);
+    });
+
   program
     .command('new <idea>')
     .description('Create a new project from an idea')

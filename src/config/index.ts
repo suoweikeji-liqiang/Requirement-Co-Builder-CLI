@@ -64,3 +64,7 @@ export function getApiKey(config: Config): string {
 export function getModel(config: Config): string {
   return config.defaultModel ?? DEFAULT_MODELS[config.defaultProvider];
 }
+
+export function getBaseUrl(config: Config): string | undefined {
+  return config.defaultProvider === 'openai' ? config.openaiBaseUrl : config.anthropicBaseUrl;
+}

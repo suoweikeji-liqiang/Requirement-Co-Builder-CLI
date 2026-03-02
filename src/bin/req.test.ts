@@ -12,4 +12,13 @@ describe('req CLI command wiring', () => {
     expect(names).toContain('build');
     expect(names).toContain('research');
   });
+
+  it('registers config set-base-url subcommand', () => {
+    const program = buildProgram();
+    const configCommand = program.commands.find((cmd: { name: () => string }) => cmd.name() === 'config');
+    const subcommands =
+      configCommand?.commands.map((cmd: { name: () => string }) => cmd.name()) ?? [];
+
+    expect(subcommands).toContain('set-base-url');
+  });
 });

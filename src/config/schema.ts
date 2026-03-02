@@ -5,6 +5,8 @@ export const ConfigSchema = z.object({
   defaultModel: z.string().optional(),
   openaiKey: z.string().optional(),
   anthropicKey: z.string().optional(),
+  openaiBaseUrl: z.string().url().optional(),
+  anthropicBaseUrl: z.string().url().optional(),
 });
 
 export type Config = z.infer<typeof ConfigSchema>;

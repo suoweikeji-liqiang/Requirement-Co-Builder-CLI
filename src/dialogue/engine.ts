@@ -1,6 +1,6 @@
 import type { Message as AdapterMessage } from '../adapters/llm.js';
 import { createLLMAdapter } from '../adapters/llm.js';
-import { loadConfig, getApiKey, getModel } from '../config/index.js';
+import { loadConfig, getApiKey, getBaseUrl, getModel } from '../config/index.js';
 import { streamResponse } from '../display/stream.js';
 import type { ProjectState } from '../state/schema.js';
 import type { ClarityStage, FiveDimensionProjection } from './model.js';
@@ -64,7 +64,8 @@ async function defaultRespond(messages: AdapterMessage[]): Promise<string> {
   const provider = config.defaultProvider;
   const apiKey = getApiKey(config);
   const model = getModel(config);
-  const adapter = createLLMAdapter(provider, apiKey, model);
+  const baseURL = getBaseUrl(config);
+  const adapter = createLLMAdapter(provider, apiKey, model, baseURL);
   return streamResponse(adapter, messages);
 }
 

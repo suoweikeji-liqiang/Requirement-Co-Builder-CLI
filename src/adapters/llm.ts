@@ -28,14 +28,15 @@ export function createLLMAdapter(
   provider: Provider,
   apiKey: string,
   modelId: string,
+  baseURL?: string,
 ): LLMAdapter {
   let model: LanguageModel;
 
   if (provider === 'openai') {
-    const openai = createOpenAI({ apiKey });
+    const openai = createOpenAI({ apiKey, baseURL });
     model = openai(modelId);
   } else if (provider === 'anthropic') {
-    const anthropic = createAnthropic({ apiKey });
+    const anthropic = createAnthropic({ apiKey, baseURL });
     model = anthropic(modelId);
   } else {
     throw new Error(`Unknown provider: ${provider}. Supported: openai, anthropic`);
