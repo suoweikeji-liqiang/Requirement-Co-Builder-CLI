@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { loadConfig, saveConfig } from '../config/index.js';
 import { createProject, deleteProject, listProjects, openProject } from '../projects/index.js';
 import { snapshotProject } from '../projects/snapshot.js';
+import { compileProjectOutput } from '../output/compile.js';
 import { pathToFileURL } from 'node:url';
 import { startChatSession } from '../dialogue/session.js';
 
@@ -126,6 +127,17 @@ export function buildProgram(): Command {
       const useLocal = this.optsWithGlobals().local === true;
       const snapshotDir = await snapshotProject(id, useLocal, options.tag);
       console.log(`Snapshot created: ${snapshotDir}`);
+    });
+
+  program
+    .command('build <id>')
+    .description('Compile project into spec, acceptance, and task outputs')
+    .action(async function (id: string) {
+      const useLocal = this.optsWithGlobals().local === true;
+      const output = await compileProjectOutput(id, useLocal);
+      console.log(`Generated: ${output.specPath}`);
+      console.log(`Generated: ${output.acceptancePath}`);
+      console.log(`Generated: ${output.tasksPath}`);
     });
 
   program
