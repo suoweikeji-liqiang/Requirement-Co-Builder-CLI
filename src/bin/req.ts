@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { loadConfig, saveConfig } from '../config/index.js';
 import { createProject, deleteProject, listProjects, openProject } from '../projects/index.js';
 import { snapshotProject } from '../projects/snapshot.js';
+import { addResearchLink, addResearchNote } from '../projects/research.js';
 import { compileProjectOutput } from '../output/compile.js';
 import { pathToFileURL } from 'node:url';
 import { startChatSession } from '../dialogue/session.js';
@@ -146,6 +147,28 @@ export function buildProgram(): Command {
     .action(async function (id: string) {
       const useLocal = this.optsWithGlobals().local === true;
       await startChatSession(id, useLocal);
+    });
+
+  const researchCmd = program.command('research').description('Manage project research notes and links');
+
+  researchCmd
+    .command('add-note <id> <note...>')
+    .description('Append a research note to the project log')
+    .action(async function (id: string, noteParts: string[]) {
+      const useLocal = this.optsWithGlobals().local === true;
+      const note = noteParts.join(' ').trim();
+      const researchPath = await addResearchNote(id, useLocal, note);
+      console.log(`Research note appended: ${researchPath}`);
+    });
+
+  researchCmd
+    .command('add-link <id> <url>')
+    .description('Append a research link to the project log')
+    .requiredOption('--title <title>', 'link title')
+    .action(async function (id: string, url: string, options: { title: string }) {
+      const useLocal = this.optsWithGlobals().local === true;
+      const researchPath = await addResearchLink(id, useLocal, url, options.title);
+      console.log(`Research link appended: ${researchPath}`);
     });
 
   return program;
