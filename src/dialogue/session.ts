@@ -36,6 +36,15 @@ export async function startChatSession(projectId: string, useLocal: boolean): Pr
       process.stdout.write(`ONE_LINER: ${result.compression.oneLiner}\n`);
       process.stdout.write(`THREE_LINER:\n${result.compression.threeLiner}\n`);
       process.stdout.write(`STRUCTURED:\n${result.compression.structured}\n`);
+      if (result.logicChains.length > 0) {
+        process.stdout.write(result.logicChainBlock + '\n');
+      }
+      if (result.businessAssumptionBlock) {
+        process.stdout.write(result.businessAssumptionBlock + '\n');
+      }
+      if (result.guardWarnings.length > 0) {
+        process.stdout.write(`GUARD_WARNINGS:\n- ${result.guardWarnings.join('\n- ')}\n`);
+      }
     }
   } finally {
     rl.close();

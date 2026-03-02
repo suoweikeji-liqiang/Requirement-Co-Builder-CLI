@@ -8,6 +8,18 @@ import { createEmptyProjection, nextClarityStage, projectFromTurn } from './mode
 import { buildSystemPrompt, buildUserPrompt } from './prompts.js';
 import type { CompressionOutput, LogicPremise } from './render.js';
 import { buildCompression, buildLogicBase, enforceSingleQuestion } from './render.js';
+import {
+  detectAbstractEvaluativeLanguage,
+  detectBusinessAssumptions,
+  detectModelDominantRhythm,
+  enforceStagePolicy,
+} from './guards.js';
+import {
+  extractLogicChains,
+  formatBusinessAssumptionBlock,
+  formatLogicChainBlock,
+  type LogicChain,
+} from './logic-chain.js';
 
 export interface RoundResult {
   assistantText: string;
@@ -15,6 +27,11 @@ export interface RoundResult {
   clarityStage: ClarityStage;
   logicBase: LogicPremise[];
   compression: CompressionOutput;
+  guardWarnings: string[];
+  logicChains: LogicChain[];
+  businessAssumptions: string[];
+  logicChainBlock: string;
+  businessAssumptionBlock: string;
 }
 
 export interface AppendRoundInput extends RoundResult {
@@ -59,13 +76,32 @@ export async function executeRound(
   const messages = toAdapterMessages(state, userInput);
   const respond = options.respond ?? defaultRespond;
   const assistantRaw = await respond(messages);
-  const assistantText = enforceSingleQuestion(assistantRaw);
+  let assistantText = enforceSingleQuestion(assistantRaw);
+
+  const policy = enforceStagePolicy(state.clarityStage, assistantText);
+  assistantText = policy.sanitized;
+
+  const guardWarnings = detectAbstractEvaluativeLanguage(assistantText);
+  if (policy.blocked && policy.reason) {
+    guardWarnings.push(policy.reason);
+  }
+
+  const rhythm = detectModelDominantRhythm(state.messages);
+  if (rhythm.isDominant) {
+    guardWarnings.push(
+      `Model-dominant rhythm detected (${rhythm.consecutiveAssistantTurns} consecutive assistant turns).`,
+    );
+  }
 
   const previousProjection = state.projection ?? createEmptyProjection();
   const projection = projectFromTurn(previousProjection, userInput);
   const clarityStage = nextClarityStage(state.clarityStage, projection);
   const logicBase = buildLogicBase(userInput, assistantText);
   const compression = buildCompression(assistantText);
+  const logicChains = extractLogicChains(assistantText);
+  const businessAssumptions = detectBusinessAssumptions(assistantText);
+  const logicChainBlock = formatLogicChainBlock(logicChains);
+  const businessAssumptionBlock = formatBusinessAssumptionBlock(businessAssumptions);
 
   return {
     assistantText,
@@ -73,6 +109,11 @@ export async function executeRound(
     clarityStage,
     logicBase,
     compression,
+    guardWarnings,
+    logicChains,
+    businessAssumptions,
+    logicChainBlock,
+    businessAssumptionBlock,
   };
 }
 
@@ -84,6 +125,10 @@ export function appendRoundToState(state: ProjectState, input: AppendRoundInput)
     projection: input.projection,
     lastLogicBase: input.logicBase,
     lastCompression: input.compression,
+    lastGuardWarnings: input.guardWarnings,
+    lastBusinessAssumptions: input.businessAssumptions,
+    lastLogicChainBlock: input.logicChainBlock,
+    lastBusinessAssumptionBlock: input.businessAssumptionBlock,
     messages: [
       ...state.messages,
       { role: 'user', content: input.userInput, timestamp },

@@ -53,6 +53,10 @@ export const ProjectStateSchema = z.object({
   projection: ProjectionSchema.optional(),
   lastLogicBase: z.array(LogicPremiseSchema).optional(),
   lastCompression: CompressionSchema.optional(),
+  lastGuardWarnings: z.array(z.string()).optional(),
+  lastLogicChainBlock: z.string().optional(),
+  lastBusinessAssumptionBlock: z.string().optional(),
+  lastBusinessAssumptions: z.array(z.string()).optional(),
 });
 
 export type ProjectState = z.infer<typeof ProjectStateSchema>;
