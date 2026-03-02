@@ -4,6 +4,8 @@ import {
   type FiveDimensionProjection,
 } from './model.js';
 import { buildCompression, buildLogicBase, enforceSingleQuestion } from './render.js';
+import { appendRoundToState, executeRound } from './engine.js';
+import { createInitialState } from '../state/index.js';
 
 describe('dialogue domain model', () => {
   it('progresses stage deterministically based on projection completeness', () => {
@@ -57,5 +59,44 @@ describe('dialogue rendering helpers', () => {
     const normalized = enforceSingleQuestion('What is your goal? What constraints matter?');
     const count = (normalized.match(/\?/g) ?? []).length;
     expect(count).toBe(1);
+  });
+});
+
+describe('dialogue engine round execution', () => {
+  it('executes round with one-question enforcement and compression', async () => {
+    const state = createInitialState('proj-1', 'Build a requirements tool', true);
+    const result = await executeRound(state, 'I need clearer specs', {
+      respond: async () => 'I understand your need. What should we clarify first? Any deadline?',
+    });
+
+    expect((result.assistantText.match(/\?/g) ?? []).length).toBe(1);
+    expect(result.compression.oneLiner.length).toBeGreaterThan(0);
+    expect(result.logicBase.length).toBeGreaterThan(0);
+  });
+
+  it('appends user and assistant messages and updates stage/projection in state', () => {
+    const state = createInitialState('proj-2', 'Plan my CLI', true);
+    const updated = appendRoundToState(state, {
+      userInput: 'Need a command layout',
+      assistantText: 'Understood. Which command is most critical?',
+      projection: {
+        context: 'CLI planning',
+        actors: 'developer',
+        intent: 'define commands',
+        mechanism: '',
+        boundary: '',
+      },
+      clarityStage: 'direction',
+      logicBase: [],
+      compression: {
+        oneLiner: 'Define the core command first.',
+        threeLiner: 'Define scope.\nPick one command.\nRefine details.',
+        structured: '{"oneLiner":"Define the core command first."}',
+      },
+    });
+
+    expect(updated.messages.length).toBe(2);
+    expect(updated.clarityStage).toBe('direction');
+    expect(updated.projection?.actors).toBe('developer');
   });
 });
