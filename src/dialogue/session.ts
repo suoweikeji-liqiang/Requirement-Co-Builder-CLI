@@ -4,6 +4,7 @@ import { writeProjectState } from '../state/index.js';
 import { openProject } from '../projects/index.js';
 import { appendRoundToState, executeRound } from './engine.js';
 import { formatLogicBaseBlock } from './render.js';
+import { buildTriggeredExplanation } from './explain.js';
 
 export async function startChatSession(projectId: string, useLocal: boolean): Promise<void> {
   const projectDir = getProjectDir(projectId, useLocal);
@@ -44,6 +45,10 @@ export async function startChatSession(projectId: string, useLocal: boolean): Pr
       }
       if (result.guardWarnings.length > 0) {
         process.stdout.write(`GUARD_WARNINGS:\n- ${result.guardWarnings.join('\n- ')}\n`);
+      }
+      const explanation = buildTriggeredExplanation(input, result.assistantText);
+      if (explanation) {
+        process.stdout.write(`${explanation}\n`);
       }
     }
   } finally {
