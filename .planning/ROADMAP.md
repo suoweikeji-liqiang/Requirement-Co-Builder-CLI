@@ -26,9 +26,9 @@
 **Plans:** 3 plans
 
 Plans:
-- [x] 01-01-PLAN.md — Project scaffold + config system (package.json, tsconfig, tsup, paths, config load/save, CLI entry with `req config` commands)
-- [x] 01-02-PLAN.md — Atomic state I/O + project utilities (atomic write/recovery, state schema, state read/write, project ID generation, error display)
-- [x] 01-03-PLAN.md — LLM adapter + streaming display (multi-provider factory, structured output with Zod fallback, token streaming renderer with gutter indicator)
+- [x] 01-01-PLAN.md - Project scaffold + config system (package.json, tsconfig, tsup, paths, config load/save, CLI entry with `req config` commands)
+- [x] 01-02-PLAN.md - Atomic state I/O + project utilities (atomic write/recovery, state schema, state read/write, project ID generation, error display)
+- [x] 01-03-PLAN.md - LLM adapter + streaming display (multi-provider factory, structured output with Zod fallback, token streaming renderer with gutter indicator)
 
 ### Phase 2: Core Dialogue
 **Goal:** Users can create projects, conduct multi-turn mentor-style dialogues, and trust the system to keep them thinking clearly.
@@ -44,17 +44,17 @@ Plans:
 **Plans:** 4 plans
 
 Plans:
-- [x] 02-01-PLAN.md — Project lifecycle commands (`new/list/open/delete`) and project service layer
-- [x] 02-02-PLAN.md — Chat session engine with persistence, stage progression, five-dimension model, LOGIC_BASE, and compressed rewrites
-- [ ] 02-03-PLAN.md — Safety guardrails and reasoning blocks (LOGIC_CHAIN, BUSINESS_ASSUMPTION, stage/policy checks)
-- [ ] 02-04-PLAN.md — Snapshot command and trigger-gated knowledge explanation behavior
+- [x] 02-01-PLAN.md - Project lifecycle commands (`new/list/open/delete`) and project service layer
+- [x] 02-02-PLAN.md - Chat session engine with persistence, stage progression, five-dimension model, LOGIC_BASE, and compressed rewrites
+- [x] 02-03-PLAN.md - Safety guardrails and reasoning blocks (LOGIC_CHAIN, BUSINESS_ASSUMPTION, stage/policy checks)
+- [ ] 02-04-PLAN.md - Snapshot command and trigger-gated knowledge explanation behavior
 
 ### Phase 3: Output & Polish
 **Goal:** Users can compile a finished dialogue into actionable spec documents and maintain a research/decision trail.
 **Depends on:** Phase 2
 **Requirements:** OUT-01, OUT-02, OUT-03, OUT-04
 **Success Criteria:**
-1. User runs `req build <id>` and receives three files: `spec.md`, `acceptance.md`, `tasks.md` — all in English structured fields
+1. User runs `req build <id>` and receives three files: `spec.md`, `acceptance.md`, `tasks.md` - all in English structured fields
 2. `idea.md` reflects the latest one-liner, three-liner, structured version, stage, and open points after every dialogue round
 3. User runs `req research add-note` and `req research add-link` and the entries persist in the project directory
 4. `decisions.md` contains a timestamped log of every confirmed or modified point from the dialogue
@@ -66,5 +66,5 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-03-02 |
-| 2. Core Dialogue | 2/4 | In Progress | - |
+| 2. Core Dialogue | 3/4 | In Progress | - |
 | 3. Output & Polish | 0/? | Not started | - |

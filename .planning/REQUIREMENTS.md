@@ -21,17 +21,17 @@
 - [x] **DIAL-02**: System tracks clarity stage progression (concept → direction → structure → executable)
 - [x] **DIAL-03**: System maintains five-dimension structural model (Context / Actors / Intent / Mechanism / Boundary)
 - [x] **DIAL-04**: System outputs LOGIC_BASE (explicit premises with source tags) each round
-- [ ] **DIAL-05**: System outputs LOGIC_CHAIN (CAUSE/EFFECT/ASSUMPTION) when causal reasoning appears
+- [x] **DIAL-05**: System outputs LOGIC_CHAIN (CAUSE/EFFECT/ASSUMPTION) when causal reasoning appears
 - [x] **DIAL-06**: System generates compressed versions each round: one-liner / three-liner / structured
 - [x] **DIAL-07**: System asks only 1 question per round (no question bombardment)
 
 ### Safety Guards
 
-- [ ] **SAFE-01**: System prohibits abstract evaluative language (better/optimal/advanced) without logic chain
-- [ ] **SAFE-02**: System prohibits architecture suggestions before structure stage
-- [ ] **SAFE-03**: System detects model-dominant rhythm (consecutive rounds without questions or with excessive suggestions)
+- [x] **SAFE-01**: System prohibits abstract evaluative language (better/optimal/advanced) without logic chain
+- [x] **SAFE-02**: System prohibits architecture suggestions before structure stage
+- [x] **SAFE-03**: System detects model-dominant rhythm (consecutive rounds without questions or with excessive suggestions)
 - [ ] **SAFE-04**: Knowledge explanation only on user trigger (`/explain` `/deep-dive` `/later`), ≤8 sentences, with confidence tag
-- [ ] **SAFE-05**: Business assumptions explicitly surfaced (BUSINESS_ASSUMPTION block) when business judgments appear
+- [x] **SAFE-05**: Business assumptions explicitly surfaced (BUSINESS_ASSUMPTION block) when business judgments appear
 
 ### Output & Compilation
 
@@ -90,14 +90,14 @@
 | DIAL-02 | Phase 2 | Complete |
 | DIAL-03 | Phase 2 | Complete |
 | DIAL-04 | Phase 2 | Complete |
-| DIAL-05 | Phase 2 | Pending |
+| DIAL-05 | Phase 2 | Complete |
 | DIAL-06 | Phase 2 | Complete |
 | DIAL-07 | Phase 2 | Complete |
-| SAFE-01 | Phase 2 | Pending |
-| SAFE-02 | Phase 2 | Pending |
-| SAFE-03 | Phase 2 | Pending |
+| SAFE-01 | Phase 2 | Complete |
+| SAFE-02 | Phase 2 | Complete |
+| SAFE-03 | Phase 2 | Complete |
 | SAFE-04 | Phase 2 | Pending |
-| SAFE-05 | Phase 2 | Pending |
+| SAFE-05 | Phase 2 | Complete |
 | OUT-01 | Phase 3 | Pending |
 | OUT-02 | Phase 3 | Pending |
 | OUT-03 | Phase 3 | Pending |
