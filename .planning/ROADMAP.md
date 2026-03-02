@@ -45,7 +45,7 @@ Plans:
 
 Plans:
 - [x] 02-01-PLAN.md — Project lifecycle commands (`new/list/open/delete`) and project service layer
-- [ ] 02-02-PLAN.md — Chat session engine with persistence, stage progression, five-dimension model, LOGIC_BASE, and compressed rewrites
+- [x] 02-02-PLAN.md — Chat session engine with persistence, stage progression, five-dimension model, LOGIC_BASE, and compressed rewrites
 - [ ] 02-03-PLAN.md — Safety guardrails and reasoning blocks (LOGIC_CHAIN, BUSINESS_ASSUMPTION, stage/policy checks)
 - [ ] 02-04-PLAN.md — Snapshot command and trigger-gated knowledge explanation behavior
 
@@ -66,5 +66,5 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-03-02 |
-| 2. Core Dialogue | 1/4 | In Progress | - |
+| 2. Core Dialogue | 2/4 | In Progress | - |
 | 3. Output & Polish | 0/? | Not started | - |

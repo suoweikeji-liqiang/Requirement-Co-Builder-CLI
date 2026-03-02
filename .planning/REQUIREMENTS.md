@@ -11,19 +11,19 @@
 - [x] **PROJ-02**: User can list all projects with stage and last-updated (`req list`)
 - [x] **PROJ-03**: User can open/view a project (`req open <id>`)
 - [x] **PROJ-04**: User can delete a project
-- [ ] **PROJ-05**: User can save and resume dialogue sessions (`req chat <id>` restores full context)
+- [x] **PROJ-05**: User can save and resume dialogue sessions (`req chat <id>` restores full context)
 - [ ] **PROJ-06**: User can create milestone snapshots (`req snapshot <id> --tag v0.1`)
 - [x] **PROJ-07**: User can configure storage location (global `~/.reqgen/` or `--local` current directory)
 
 ### Dialogue Engine
 
-- [ ] **DIAL-01**: System conducts mentor-style dialogue: restate understanding, advance one point, compress rewrite each round
-- [ ] **DIAL-02**: System tracks clarity stage progression (concept → direction → structure → executable)
-- [ ] **DIAL-03**: System maintains five-dimension structural model (Context / Actors / Intent / Mechanism / Boundary)
-- [ ] **DIAL-04**: System outputs LOGIC_BASE (explicit premises with source tags) each round
+- [x] **DIAL-01**: System conducts mentor-style dialogue: restate understanding, advance one point, compress rewrite each round
+- [x] **DIAL-02**: System tracks clarity stage progression (concept → direction → structure → executable)
+- [x] **DIAL-03**: System maintains five-dimension structural model (Context / Actors / Intent / Mechanism / Boundary)
+- [x] **DIAL-04**: System outputs LOGIC_BASE (explicit premises with source tags) each round
 - [ ] **DIAL-05**: System outputs LOGIC_CHAIN (CAUSE/EFFECT/ASSUMPTION) when causal reasoning appears
-- [ ] **DIAL-06**: System generates compressed versions each round: one-liner / three-liner / structured
-- [ ] **DIAL-07**: System asks only 1 question per round (no question bombardment)
+- [x] **DIAL-06**: System generates compressed versions each round: one-liner / three-liner / structured
+- [x] **DIAL-07**: System asks only 1 question per round (no question bombardment)
 
 ### Safety Guards
 
@@ -83,16 +83,16 @@
 | PROJ-02 | Phase 2 | Complete |
 | PROJ-03 | Phase 2 | Complete |
 | PROJ-04 | Phase 2 | Complete |
-| PROJ-05 | Phase 2 | Pending |
+| PROJ-05 | Phase 2 | Complete |
 | PROJ-06 | Phase 2 | Pending |
 | PROJ-07 | Phase 1 | Complete |
-| DIAL-01 | Phase 2 | Pending |
-| DIAL-02 | Phase 2 | Pending |
-| DIAL-03 | Phase 2 | Pending |
-| DIAL-04 | Phase 2 | Pending |
+| DIAL-01 | Phase 2 | Complete |
+| DIAL-02 | Phase 2 | Complete |
+| DIAL-03 | Phase 2 | Complete |
+| DIAL-04 | Phase 2 | Complete |
 | DIAL-05 | Phase 2 | Pending |
-| DIAL-06 | Phase 2 | Pending |
-| DIAL-07 | Phase 2 | Pending |
+| DIAL-06 | Phase 2 | Complete |
+| DIAL-07 | Phase 2 | Complete |
 | SAFE-01 | Phase 2 | Pending |
 | SAFE-02 | Phase 2 | Pending |
 | SAFE-03 | Phase 2 | Pending |
