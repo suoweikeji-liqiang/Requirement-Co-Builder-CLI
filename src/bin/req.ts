@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
+import { realpathSync } from 'node:fs';
 import { loadConfig, saveConfig } from '../config/index.js';
 import { createProject, deleteProject, listProjects, openProject } from '../projects/index.js';
 import { snapshotProject } from '../projects/snapshot.js';
 import { addResearchLink, addResearchNote } from '../projects/research.js';
 import { compileProjectOutput } from '../output/compile.js';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { startChatSession } from '../dialogue/session.js';
 
 const VALID_PROVIDERS = ['openai', 'anthropic'] as const;
@@ -179,7 +180,21 @@ async function main(): Promise<void> {
   await program.parseAsync(process.argv);
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+function isCliEntry(): boolean {
+  if (!process.argv[1]) {
+    return false;
+  }
+
+  try {
+    const invokedPath = realpathSync(process.argv[1]);
+    const modulePath = realpathSync(fileURLToPath(import.meta.url));
+    return invokedPath === modulePath;
+  } catch {
+    return import.meta.url === pathToFileURL(process.argv[1]).href;
+  }
+}
+
+if (isCliEntry()) {
   main().catch((err: unknown) => {
     const message = err instanceof Error ? err.message : String(err);
     console.error(`Error: ${message}`);
