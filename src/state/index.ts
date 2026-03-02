@@ -67,5 +67,12 @@ export function createInitialState(
     createdAt: now,
     updatedAt: now,
     useLocal,
+    projection: {
+      context: '',
+      actors: '',
+      intent: '',
+      mechanism: '',
+      boundary: '',
+    },
   };
 }

@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { loadConfig, saveConfig } from '../config/index.js';
 import { createProject, deleteProject, listProjects, openProject } from '../projects/index.js';
 import { pathToFileURL } from 'node:url';
+import { startChatSession } from '../dialogue/session.js';
 
 const VALID_PROVIDERS = ['openai', 'anthropic'] as const;
 type Provider = typeof VALID_PROVIDERS[number];
@@ -114,6 +115,14 @@ export function buildProgram(): Command {
       const useLocal = this.optsWithGlobals().local === true;
       await deleteProject(id, useLocal);
       console.log(`Deleted project: ${id}`);
+    });
+
+  program
+    .command('chat <id>')
+    .description('Resume dialogue session for a project')
+    .action(async function (id: string) {
+      const useLocal = this.optsWithGlobals().local === true;
+      await startChatSession(id, useLocal);
     });
 
   return program;

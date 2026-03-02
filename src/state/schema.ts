@@ -12,6 +12,27 @@ export const MessageSchema = z.object({
 
 export type Message = z.infer<typeof MessageSchema>;
 
+export const ProjectionSchema = z.object({
+  context: z.string(),
+  actors: z.string(),
+  intent: z.string(),
+  mechanism: z.string(),
+  boundary: z.string(),
+});
+
+export type Projection = z.infer<typeof ProjectionSchema>;
+
+export const LogicPremiseSchema = z.object({
+  premise: z.string(),
+  source: z.enum(['user', 'assistant', 'inference']),
+});
+
+export const CompressionSchema = z.object({
+  oneLiner: z.string(),
+  threeLiner: z.string(),
+  structured: z.string(),
+});
+
 /**
  * Schema for the project state persisted to state.json.
  *
@@ -29,6 +50,9 @@ export const ProjectStateSchema = z.object({
   createdAt: z.string(),
   updatedAt: z.string(),
   useLocal: z.boolean(),
+  projection: ProjectionSchema.optional(),
+  lastLogicBase: z.array(LogicPremiseSchema).optional(),
+  lastCompression: CompressionSchema.optional(),
 });
 
 export type ProjectState = z.infer<typeof ProjectStateSchema>;
