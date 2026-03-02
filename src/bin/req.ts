@@ -2,6 +2,7 @@
 import { Command } from 'commander';
 import { loadConfig, saveConfig } from '../config/index.js';
 import { createProject, deleteProject, listProjects, openProject } from '../projects/index.js';
+import { snapshotProject } from '../projects/snapshot.js';
 import { pathToFileURL } from 'node:url';
 import { startChatSession } from '../dialogue/session.js';
 
@@ -115,6 +116,16 @@ export function buildProgram(): Command {
       const useLocal = this.optsWithGlobals().local === true;
       await deleteProject(id, useLocal);
       console.log(`Deleted project: ${id}`);
+    });
+
+  program
+    .command('snapshot <id>')
+    .description('Create a timestamped snapshot for a project')
+    .option('--tag <tag>', 'snapshot tag name (default: ISO timestamp)')
+    .action(async function (id: string, options: { tag?: string }) {
+      const useLocal = this.optsWithGlobals().local === true;
+      const snapshotDir = await snapshotProject(id, useLocal, options.tag);
+      console.log(`Snapshot created: ${snapshotDir}`);
     });
 
   program
