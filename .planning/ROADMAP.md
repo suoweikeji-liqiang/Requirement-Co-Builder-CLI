@@ -23,7 +23,12 @@
 4. All file paths resolve correctly on Windows, macOS, and Linux; Chinese characters in output render without mojibake
 5. Storage location respects `--local` flag (current directory) or defaults to `~/.reqgen/projects/`
 
-**Plans:** TBD
+**Plans:** 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Project scaffold + config system (package.json, tsconfig, tsup, paths, config load/save, CLI entry with `req config` commands)
+- [ ] 01-02-PLAN.md — Atomic state I/O + project utilities (atomic write/recovery, state schema, state read/write, project ID generation, error display)
+- [ ] 01-03-PLAN.md — LLM adapter + streaming display (multi-provider factory, structured output with Zod fallback, token streaming renderer with gutter indicator)
 
 ### Phase 2: Core Dialogue
 **Goal:** Users can create projects, conduct multi-turn mentor-style dialogues, and trust the system to keep them thinking clearly.
@@ -54,6 +59,6 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/? | Not started | - |
+| 1. Foundation | 0/3 | Not started | - |
 | 2. Core Dialogue | 0/? | Not started | - |
 | 3. Output & Polish | 0/? | Not started | - |
