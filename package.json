@@ -1,0 +1,53 @@
+{
+  "name": "requirement-co-builder",
+  "version": "0.1.0",
+  "description": "A CLI tool for co-building structured requirements through guided dialogue",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "req": "./dist/bin/req.js"
+  },
+  "scripts": {
+    "dev": "tsx src/bin/req.ts",
+    "build": "tsup",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --passWithNoTests"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "ai": "^4.0.0",
+    "@ai-sdk/openai": "^1.0.0",
+    "@ai-sdk/anthropic": "^1.0.0",
+    "commander": "^13.0.0",
+    "zod": "^3.0.0",
+    "ora": "^8.0.0",
+    "chalk": "^5.0.0",
+    "jsonrepair": "^3.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^18.0.0",
+    "tsx": "^4.0.0",
+    "tsup": "^8.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "ts-jest": "^29.0.0"
+  },
+  "jest": {
+    "preset": "ts-jest/presets/default-esm",
+    "testEnvironment": "node",
+    "extensionsToTreatAsEsm": [".ts"],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "useESM": true
+        }
+      ]
+    }
+  }
+}
